@@ -8,6 +8,7 @@ import src.observer.EmailService;
 import src.observer.LoggerService;
 import src.observer.StockService;
 import src.model.Product;
+import src.notification.NotificationService;
 import src.payment.OldPaymentSystem;
 import src.payment.PaymentAdapter;
 import src.payment.PaymentService;
@@ -76,5 +77,13 @@ public class Main {
         order.attach(new LoggerService());
         System.out.println("Etat initial : " + order.getStatus());
         order.setStatus("SHIPPED");
+
+        // Partie 7 : Strategy + Factory
+        System.out.println("\n--- Partie 7 : Strategy ---");
+        NotificationService notifications = new NotificationService();
+        notifications.send("EMAIL", "Bonjour");
+        notifications.send("SMS", "Bonjour");
+        notifications.send("PUSH", "Bonjour");
+        notifications.send("WHATSAPP", "Bonjour");
     }
 }
