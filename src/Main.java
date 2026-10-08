@@ -68,5 +68,13 @@ public class Main {
         catalogue.add(clothing);
 
         catalogue.display();
+        // Partie 6 : Observer
+        System.out.println("\n--- Partie 6 : Observer ---");
+        Order order = new Order();
+        order.attach(new EmailService());
+        order.attach(new StockService());
+        order.attach(new LoggerService());
+        System.out.println("Etat initial : " + order.getStatus());
+        order.setStatus("SHIPPED");
     }
 }
